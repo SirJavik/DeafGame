@@ -16,6 +16,15 @@ public class DeafMain {
         int appWidth    = deafConfig.readInt("app", "width");
 
         /*
+         * Version major, minor and patch level
+         */
+        int verMajor = deafConfig.readInt("version", "major");
+        int verMinor = deafConfig.readInt("version", "minor");
+        int verPatch = deafConfig.readInt("version", "patch");
+
+        String verString = "v" + verMajor + "." + verMinor + "." + verPatch;
+
+        /*
          * Update repository, protocol, branch and autoupdate
          */
         String updateRepo       = deafConfig.readString("updater","repo");
@@ -24,18 +33,33 @@ public class DeafMain {
         boolean updateAuto      = deafConfig.readBool("updater","autoupdate");
 
         /* ------------------------------------------------------------------------ *
+         * DeafGame initialization
+         * ------------------------------------------------------------------------ */
+
+        DeafConsole.writeLine("DeafGame " + verString);
+
+        /* ------------------------------------------------------------------------ *
          * Run update check
          * ------------------------------------------------------------------------ */
         if(updateAuto) {
-            System.out.println("Init Updater");
+            DeafConsole.writeLine("DeafUpdater goes on");
 
-            DeafUpdater deafUpdater = new DeafUpdater();
+            DeafUpdater deafUpdater = new DeafUpdater(updateBranch);
 
-            deafUpdater.updateCheck();
+            if(deafUpdater.updateCheck()) {
+                DeafConsole.writeLine("Update requied");
+            } else {
+                DeafConsole.writeLine("No update needed: Project already up-to-date");
+                DeafConsole.writeLine("DeafUpdater goes off");
+            }
         }
 
         System.out.println("DeafGame");
-        DeafWindow gameWindow = new DeafWindow(appWidth,appHeight, appTitle);
+
+        DeafWindow gameWindow = new DeafWindow(appWidth,
+                                               appHeight,
+                                               appTitle,
+                                               verString);
     }
 
 }

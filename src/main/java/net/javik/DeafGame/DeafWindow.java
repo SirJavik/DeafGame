@@ -25,7 +25,7 @@ public class DeafWindow extends JFrame {
      */
     private int windowHeight    = 0;
 
-    public DeafWindow( int width, int height, String title ) {
+    public DeafWindow( int width, int height, String title, String version ) {
         /**
          * Call JFrame constructor with super
          * Like PHP's parent::__construct();
@@ -42,14 +42,26 @@ public class DeafWindow extends JFrame {
             public void windowClosing(WindowEvent evt) { dispose(); }
         });
 
+
         this.windowHeight = height;
         this.windowWidth = width;
 
         this.setSize(this.windowWidth, this.windowHeight);
         this.setResizable(false);
+
         this.setLayout(null);
 
+        /**
+         * Main menu
+         */
+        DeafMainmenu menu = new DeafMainmenu(this.windowHeight,this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
+        menu.setBounds(0,0,this.windowWidth,this.windowHeight);
+
+        this.add(menu);
+
+
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
 
     }
 
