@@ -66,4 +66,14 @@ public class DeafConfig {
     public int readInt(String section, String key) {
         return this.iniHandler.get(section, key, int.class);
     }
+
+    /**
+     * Reads a bool value from configuration file
+     * @param section Configuration file section
+     * @param key Configuration file key
+     * @return bool Configuration value
+     */
+    public boolean readBool(String section, String key) {
+        return this.iniHandler.get(section, key, boolean.class);
+    }
 }
