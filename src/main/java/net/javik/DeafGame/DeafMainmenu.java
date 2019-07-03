@@ -1,70 +1,124 @@
 package net.javik.DeafGame;
 
+import net.javik.DeafGame.DeafButtons.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.HashMap;
+import java.util.Map;
 
-public class DeafMainmenu extends DeafImagePanel {
+public class DeafMainmenu extends DeafImagePanel implements MouseListener {
+    /*
+     * Position and size for elements
+     */
+    private Map<String, DeafButton> buttonElements   = new HashMap<String, DeafButton>();
+
+    /*
+     * Elements
+     */
+    private Font deafHeadings = new Font("Arial",Font.BOLD,60);
+    private Font deafMenuEntitys = new Font("Arial",Font.BOLD,30);
+    private Font deafMenuVersion = new Font("Arial",Font.BOLD,15);
+
+    private JLabel menuTitle  = new JLabel("DeafGame");
+
+    private PlayButton playGame         = new PlayButton();
+    private OptionsButton optionsGame   = new OptionsButton();
+    private CreditsButton creditGame    = new CreditsButton();
+    private ExitButton exitGame         = new ExitButton();
+
+    private JLabel versionLabel = new JLabel();
+
     public DeafMainmenu(int height, int width, String backgroundImage, String version) {
-
-        /**
+        /*
          * Child calls parent (constructor)
          */
         super(backgroundImage, height, width);
 
         this.setLayout(null);
+        addMouseListener(this);
 
-        /**
+        /*
          * Elements
          */
-        Font deafHeadings = new Font("Arial",Font.BOLD,60);
-        Font deafMenuEntitys = new Font("Arial",Font.BOLD,30);
-        Font deafMenuVersion = new Font("Arial",Font.BOLD,15);
+        this.menuTitle.setFont(this.deafHeadings);
+        this.menuTitle.setForeground(Color.white);
 
-        JLabel menuTitle  = new JLabel("DeafGame");
-        menuTitle.setFont(deafHeadings);
-        menuTitle.setForeground(Color.white);
+        this.playGame.setFont(this.deafMenuEntitys);
+        this.playGame.setForeground(Color.white);
 
-        JLabel playGame = new JLabel("Spielen");
-        playGame.setFont(deafMenuEntitys);
-        playGame.setForeground(Color.white);
+        this.optionsGame.setFont(this.deafMenuEntitys);
+        this.optionsGame.setForeground(Color.white);
 
-        JLabel optionsGame = new JLabel("Optionen");
-        optionsGame.setFont(deafMenuEntitys);
-        optionsGame.setForeground(Color.white);
+        this.creditGame.setFont(this.deafMenuEntitys);
+        this.creditGame.setForeground(Color.white);
 
-        JLabel creditGame = new JLabel("Credits");
-        creditGame.setFont(deafMenuEntitys);
-        creditGame.setForeground(Color.white);
+        this.exitGame.setFont(this.deafMenuEntitys);
+        this.exitGame.setForeground(Color.white);
 
-        JLabel exitGame = new JLabel("Beenden");
-        exitGame.setFont(deafMenuEntitys);
-        exitGame.setForeground(Color.white);
+        this.versionLabel.setFont(this.deafMenuVersion);
+        this.versionLabel.setText(version);
+        this.versionLabel.setForeground(Color.white);
 
-        JLabel versionLabel = new JLabel(version);
-        versionLabel.setFont(deafMenuVersion);
-        versionLabel.setForeground(Color.white);
-
-        /**
+        /*
          * Positioning elements
          */
-        int availableSpace = (height - menuTitle.getPreferredSize().height - playGame.getPreferredSize().height - optionsGame.getPreferredSize().height - creditGame.getPreferredSize().height - exitGame.getPreferredSize().height) / 5;
+        int availableSpace = (height - this.menuTitle.getPreferredSize().height - this.playGame.getPreferredSize().height - this.optionsGame.getPreferredSize().height - this.creditGame.getPreferredSize().height - this.exitGame.getPreferredSize().height) / 5;
 
-        menuTitle.setBounds(    10, 5, menuTitle.getPreferredSize().width,      menuTitle.getPreferredSize().height);
-        playGame.setBounds(     10, menuTitle.getY() + availableSpace,     playGame.getPreferredSize().width,      playGame.getPreferredSize().height);
-        optionsGame.setBounds(  10, playGame.getY() + availableSpace,       optionsGame.getPreferredSize().width,   optionsGame.getPreferredSize().height);
-        creditGame.setBounds(   10, optionsGame.getY() + availableSpace,   creditGame.getPreferredSize().width,    creditGame.getPreferredSize().height);
-        exitGame.setBounds(     10, creditGame.getY() + availableSpace,    exitGame.getPreferredSize().width,      exitGame.getPreferredSize().height);
+        this.menuTitle.setBounds(    50, 15,                                            this.menuTitle.getPreferredSize().width,    this.menuTitle.getPreferredSize().height);
+        this.playGame.setBounds(     50, this.menuTitle.getY() + availableSpace + 15,   this.playGame.getPreferredSize().width,     this.playGame.getPreferredSize().height);
+        this.optionsGame.setBounds(  50, this.playGame.getY() + availableSpace + 15,    this.optionsGame.getPreferredSize().width,  this.optionsGame.getPreferredSize().height);
+        this.creditGame.setBounds(   50, this.optionsGame.getY() + availableSpace + 15, this.creditGame.getPreferredSize().width,   this.creditGame.getPreferredSize().height);
+        this.exitGame.setBounds(     50, this.creditGame.getY() + availableSpace + 15,  this.exitGame.getPreferredSize().width,     this.exitGame.getPreferredSize().height);
 
-        versionLabel.setBounds(width-versionLabel.getPreferredSize().width-10, height - versionLabel.getPreferredSize().height-30, versionLabel.getPreferredSize().width, versionLabel.getPreferredSize().height);
+        this.versionLabel.setBounds(width-this.versionLabel.getPreferredSize().width-10, height - this.versionLabel.getPreferredSize().height-30, this.versionLabel.getPreferredSize().width, this.versionLabel.getPreferredSize().height);
 
-        /**
+        /*
+         * Saving positions and sizes
+         */
+        this.buttonElements.put("playBtn",     this.playGame);
+        this.buttonElements.put("optionsBtn",  this.optionsGame);
+        this.buttonElements.put("creditsBtn",  this.creditGame);
+        this.buttonElements.put("exitBtn",     this.exitGame);
+
+        /*
          * Render Elements
          */
-        this.add(menuTitle);
-        this.add(playGame);
-        this.add(optionsGame);
-        this.add(creditGame);
-        this.add(exitGame);
-        this.add(versionLabel);
+        this.add(this.menuTitle);
+        this.add(this.playGame);
+        this.add(this.optionsGame);
+        this.add(this.creditGame);
+        this.add(this.exitGame);
+        this.add(this.versionLabel);
+    }
+
+    //-- Maus-Methoden aus dem MouseListener-Interface ---------
+    public void mouseClicked(MouseEvent mouse){}
+    public void mousePressed(MouseEvent mouse)
+    {
+        Point mousePosition = mouse.getPoint();
+
+        for(Map.Entry <String, DeafButton> entry : buttonElements.entrySet()) {
+            if( this.buttonPositionMatch(mousePosition, entry.getValue() ) ) {
+                entry.getValue().buttonTrigger();
+            }
+        }
+
+
+    }
+    public void mouseReleased(MouseEvent mouse){}
+    public void mouseEntered(MouseEvent mouse){
+
+    }
+    public void mouseExited(MouseEvent mouse){}
+
+    private boolean buttonPositionMatch(Point mousePosition,
+                                        DeafButton deafButton) {
+
+        return ((mousePosition.x >= deafButton.getX()) && (mousePosition.x <= (deafButton.getX() + deafButton.getWidth()))) &&
+                (mousePosition.y >= deafButton.getY()) && (mousePosition.y <= (deafButton.getY() + deafButton.getHeight()));
+
     }
 }

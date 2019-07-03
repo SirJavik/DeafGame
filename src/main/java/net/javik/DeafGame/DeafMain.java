@@ -1,6 +1,11 @@
 package net.javik.DeafGame;
 
 public class DeafMain {
+    private static final int PLAY_BTN = 1000,
+                             OPTIONS_BTN = 1200,
+                             CREDITS_BTN = 1400,
+                             CLOSE_BTN = 1600;
+
 
     public static void main(String[] args) {
         /* ------------------------------------------------------------------------ *
@@ -53,8 +58,6 @@ public class DeafMain {
                 DeafConsole.writeLine("DeafUpdater goes off");
             }
         }
-
-        System.out.println("DeafGame");
 
         DeafWindow gameWindow = new DeafWindow(appWidth,
                                                appHeight,
