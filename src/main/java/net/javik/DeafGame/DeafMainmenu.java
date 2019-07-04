@@ -1,6 +1,7 @@
 package net.javik.DeafGame;
 
 import net.javik.DeafGame.DeafButtons.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeafMainmenu extends DeafImagePanel implements MouseListener {
+    /*
+     * DeafWindow class
+     */
+    DeafWindow window;
+
     /*
      * Position and size for elements
      */
@@ -31,11 +37,13 @@ public class DeafMainmenu extends DeafImagePanel implements MouseListener {
 
     private JLabel versionLabel = new JLabel();
 
-    public DeafMainmenu(int height, int width, String backgroundImage, String version) {
+    public DeafMainmenu(DeafWindow window, int height, int width, String backgroundImage, String version) {
         /*
          * Child calls parent (constructor)
          */
         super(backgroundImage, height, width);
+
+        this.window = window;
 
         this.setLayout(null);
         addMouseListener(this);
@@ -96,26 +104,29 @@ public class DeafMainmenu extends DeafImagePanel implements MouseListener {
 
     //-- Maus-Methoden aus dem MouseListener-Interface ---------
     public void mouseClicked(MouseEvent mouse){}
-    public void mousePressed(MouseEvent mouse)
+
+    public void mousePressed(@NotNull MouseEvent mouse)
     {
         Point mousePosition = mouse.getPoint();
 
         for(Map.Entry <String, DeafButton> entry : buttonElements.entrySet()) {
             if( this.buttonPositionMatch(mousePosition, entry.getValue() ) ) {
-                entry.getValue().buttonTrigger();
+                entry.getValue().buttonTrigger(this.window,this);
             }
         }
 
 
     }
+
     public void mouseReleased(MouseEvent mouse){}
+
     public void mouseEntered(MouseEvent mouse){
 
     }
     public void mouseExited(MouseEvent mouse){}
 
-    private boolean buttonPositionMatch(Point mousePosition,
-                                        DeafButton deafButton) {
+    private boolean buttonPositionMatch(@NotNull Point mousePosition,
+                                        @NotNull DeafButton deafButton) {
 
         return ((mousePosition.x >= deafButton.getX()) && (mousePosition.x <= (deafButton.getX() + deafButton.getWidth()))) &&
                 (mousePosition.y >= deafButton.getY()) && (mousePosition.y <= (deafButton.getY() + deafButton.getHeight()));
