@@ -1,4 +1,4 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafBasics;
 
 public class DeafConsole {
     public static void writeLine(String message) {

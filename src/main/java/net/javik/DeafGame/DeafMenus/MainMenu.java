@@ -1,5 +1,7 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafMenus;
 
+import net.javik.DeafGame.DeafBasics.DeafImagePanel;
+import net.javik.DeafGame.DeafBasics.DeafWindow;
 import net.javik.DeafGame.DeafButtons.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,7 +12,7 @@ import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DeafMainmenu extends DeafImagePanel implements MouseListener {
+public class MainMenu extends DeafImagePanel implements MouseListener {
     /*
      * DeafWindow class
      */
@@ -37,7 +39,7 @@ public class DeafMainmenu extends DeafImagePanel implements MouseListener {
 
     private JLabel versionLabel = new JLabel();
 
-    public DeafMainmenu(DeafWindow window, int height, int width, String backgroundImage, String version) {
+    public MainMenu(DeafWindow window, int height, int width, String backgroundImage, String version) {
         /*
          * Child calls parent (constructor)
          */

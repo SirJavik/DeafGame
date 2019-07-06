@@ -1,4 +1,4 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafBasics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,18 +1,10 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafBasics;
+
+import net.javik.DeafGame.DeafMenus.MainMenu;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.applet.AudioClip;
-import java.applet.*;
-import java.util.*;
-import java.net.URL;
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 public class DeafWindow extends JFrame {
     /**
@@ -24,6 +16,32 @@ public class DeafWindow extends JFrame {
      * Window height
      */
     private int windowHeight    = 0;
+
+    /* ------------------------------------------------------------------------ *
+     * Overwrite JFrame functions
+     * ------------------------------------------------------------------------ */
+
+    /**
+     * Removes component from screen
+     * @param comp Component
+     */
+    public void remove( Component comp ) {
+        if (comp == rootPane) {
+            super.remove(comp);
+            super.invalidate();
+            super.validate();
+            super.repaint();
+        } else {
+            this.getContentPane().remove(comp);
+            this.getContentPane().invalidate();
+            this.getContentPane().validate();
+            this.getContentPane().repaint();
+        }
+    }
+
+    /* ------------------------------------------------------------------------ *
+     * DeafWindow functions
+     * ------------------------------------------------------------------------ */
 
     public DeafWindow( int width, int height, String title, String version ) {
         /**
@@ -54,7 +72,7 @@ public class DeafWindow extends JFrame {
         /**
          * Main menu
          */
-        DeafMainmenu menu = new DeafMainmenu(this, this.windowHeight,this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
+        MainMenu menu = new MainMenu(this, this.windowHeight,this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
         menu.setBounds(0,0,this.windowWidth,this.windowHeight);
 
         this.add(menu);
@@ -64,5 +82,6 @@ public class DeafWindow extends JFrame {
         this.setLocationRelativeTo(null);
 
     }
+
 
 }

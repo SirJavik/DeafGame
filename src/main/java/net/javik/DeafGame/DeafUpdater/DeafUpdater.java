@@ -1,4 +1,4 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafUpdater;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.PullCommand;

@@ -1,4 +1,4 @@
-package net.javik.DeafGame;
+package net.javik.DeafGame.DeafBasics;
 
 import java.io.File;
 import org.ini4j.*;

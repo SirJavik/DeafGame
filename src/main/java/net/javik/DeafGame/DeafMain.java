@@ -1,5 +1,10 @@
 package net.javik.DeafGame;
 
+import net.javik.DeafGame.DeafBasics.DeafConfig;
+import net.javik.DeafGame.DeafBasics.DeafConsole;
+import net.javik.DeafGame.DeafBasics.DeafWindow;
+import net.javik.DeafGame.DeafUpdater.DeafUpdater;
+
 public class DeafMain {
     private static final int PLAY_BTN = 1000,
                              OPTIONS_BTN = 1200,
