@@ -18,28 +18,6 @@ public class DeafWindow extends JFrame {
     private int windowHeight    = 0;
 
     /* ------------------------------------------------------------------------ *
-     * Overwrite JFrame functions
-     * ------------------------------------------------------------------------ */
-
-    /**
-     * Removes component from screen
-     * @param comp Component
-     */
-    public void remove( Component comp ) {
-        if (comp == rootPane) {
-            super.remove(comp);
-            super.invalidate();
-            super.validate();
-            super.repaint();
-        } else {
-            this.getContentPane().remove(comp);
-            this.getContentPane().invalidate();
-            this.getContentPane().validate();
-            this.getContentPane().repaint();
-        }
-    }
-
-    /* ------------------------------------------------------------------------ *
      * DeafWindow functions
      * ------------------------------------------------------------------------ */
 

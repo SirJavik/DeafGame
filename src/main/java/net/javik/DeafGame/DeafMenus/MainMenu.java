@@ -1,6 +1,7 @@
 package net.javik.DeafGame.DeafMenus;
 
-import net.javik.DeafGame.DeafBasics.DeafImagePanel;
+import net.javik.DeafGame.DeafBasics.DeafColor;
+import net.javik.DeafGame.DeafBasics.DeafFonts;
 import net.javik.DeafGame.DeafBasics.DeafWindow;
 import net.javik.DeafGame.DeafButtons.*;
 import org.jetbrains.annotations.NotNull;
@@ -12,11 +13,8 @@ import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainMenu extends DeafImagePanel implements MouseListener {
-    /*
-     * DeafWindow class
-     */
-    DeafWindow window;
+public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
+    private DeafWindow window;
 
     /*
      * Position and size for elements
@@ -26,10 +24,6 @@ public class MainMenu extends DeafImagePanel implements MouseListener {
     /*
      * Elements
      */
-    private Font deafHeadings = new Font("Arial",Font.BOLD,60);
-    private Font deafMenuEntitys = new Font("Arial",Font.BOLD,30);
-    private Font deafMenuVersion = new Font("Arial",Font.BOLD,15);
-
     private JLabel menuTitle  = new JLabel("DeafGame");
 
     private PlayButton playGame         = new PlayButton();
@@ -53,24 +47,24 @@ public class MainMenu extends DeafImagePanel implements MouseListener {
         /*
          * Elements
          */
-        this.menuTitle.setFont(this.deafHeadings);
-        this.menuTitle.setForeground(Color.white);
+        this.menuTitle.setFont(DeafFonts.Heading1);
+        this.menuTitle.setForeground(DeafColor.white);
 
-        this.playGame.setFont(this.deafMenuEntitys);
-        this.playGame.setForeground(Color.white);
+        this.playGame.setFont(DeafFonts.MenuEntities);
+        this.playGame.setForeground(DeafColor.white);
 
-        this.optionsGame.setFont(this.deafMenuEntitys);
-        this.optionsGame.setForeground(Color.white);
+        this.optionsGame.setFont(DeafFonts.MenuEntities);
+        this.optionsGame.setForeground(DeafColor.white);
 
-        this.creditGame.setFont(this.deafMenuEntitys);
-        this.creditGame.setForeground(Color.white);
+        this.creditGame.setFont(DeafFonts.MenuEntities);
+        this.creditGame.setForeground(DeafColor.white);
 
-        this.exitGame.setFont(this.deafMenuEntitys);
-        this.exitGame.setForeground(Color.white);
+        this.exitGame.setFont(DeafFonts.MenuEntities);
+        this.exitGame.setForeground(DeafColor.white);
 
-        this.versionLabel.setFont(this.deafMenuVersion);
+        this.versionLabel.setFont(DeafFonts.VersionLabel);
         this.versionLabel.setText(version);
-        this.versionLabel.setForeground(Color.white);
+        this.versionLabel.setForeground(DeafColor.white);
 
         /*
          * Positioning elements
@@ -129,9 +123,9 @@ public class MainMenu extends DeafImagePanel implements MouseListener {
 
     private boolean buttonPositionMatch(@NotNull Point mousePosition,
                                         @NotNull DeafButton deafButton) {
-
         return ((mousePosition.x >= deafButton.getX()) && (mousePosition.x <= (deafButton.getX() + deafButton.getWidth()))) &&
                 (mousePosition.y >= deafButton.getY()) && (mousePosition.y <= (deafButton.getY() + deafButton.getHeight()));
 
     }
+
 }

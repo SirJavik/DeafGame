@@ -1,16 +1,15 @@
-package net.javik.DeafGame.DeafBasics;
+package net.javik.DeafGame.DeafMenus;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
-public class DeafImagePanel extends JPanel{
+public class ImageMenu extends DeafMenu implements IDeafMenu{
     private BufferedImage scaledImage;
 
-    public DeafImagePanel(String file, int height, int width) {
+    public ImageMenu(String file, int height, int width) {
         try {
             BufferedImage image = ImageIO.read(new File(file));
             Image scaleImage = image.getScaledInstance(width,height, Image.SCALE_SMOOTH);
