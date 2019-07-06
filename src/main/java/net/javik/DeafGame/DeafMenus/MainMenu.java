@@ -1,5 +1,6 @@
 package net.javik.DeafGame.DeafMenus;
 
+import net.javik.DeafGame.DeafAudioPlayer;
 import net.javik.DeafGame.DeafBasics.DeafColor;
 import net.javik.DeafGame.DeafBasics.DeafFonts;
 import net.javik.DeafGame.DeafBasics.DeafWindow;
@@ -12,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
     private DeafWindow window;
@@ -32,6 +34,7 @@ public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
     private ExitButton exitGame         = new ExitButton();
 
     private JLabel versionLabel = new JLabel();
+
 
     public MainMenu(DeafWindow window, int height, int width, String backgroundImage, String version) {
         /*
@@ -96,9 +99,15 @@ public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
         this.add(this.creditGame);
         this.add(this.exitGame);
         this.add(this.versionLabel);
+
+        DeafAudioPlayer audioPlayer = new DeafAudioPlayer();
+        audioPlayer.playAudio("assets/sounds/mainmenuTheme.mp3");
+
     }
 
-    //-- Maus-Methoden aus dem MouseListener-Interface ---------
+    /* ------------------------------------------------------------------------ *
+     * Mouse interactions
+     * ------------------------------------------------------------------------ */
     public void mouseClicked(MouseEvent mouse){}
 
     public void mousePressed(@NotNull MouseEvent mouse)

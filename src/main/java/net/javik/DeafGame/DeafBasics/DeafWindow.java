@@ -50,6 +50,7 @@ public class DeafWindow extends JFrame {
         /**
          * Main menu
          */
+
         MainMenu menu = new MainMenu(this, this.windowHeight,this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
         menu.setBounds(0,0,this.windowWidth,this.windowHeight);
 

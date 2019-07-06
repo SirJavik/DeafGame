@@ -2,6 +2,7 @@ package net.javik.DeafGame.DeafButtons;
 
 import net.javik.DeafGame.DeafBasics.DeafWindow;
 import net.javik.DeafGame.DeafMenus.DeafMenu;
+import net.javik.DeafGame.DeafMenus.GameMenu;
 
 public class PlayButton extends DeafButton implements IDeafButton{
     public PlayButton() {
@@ -9,9 +10,9 @@ public class PlayButton extends DeafButton implements IDeafButton{
     }
 
     public void buttonTrigger(DeafWindow window, DeafMenu parent) {
-        System.out.println(this.getParent());
-        System.out.println(parent.getParent());
-        System.out.println(window);
-        //parent.close();
+        parent.close(window);
+
+        GameMenu gameMenu = new GameMenu();
+        parent.add(gameMenu);
     }
 }
