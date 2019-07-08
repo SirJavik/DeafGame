@@ -72,16 +72,15 @@ public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
         /*
          * Positioning elements
          */
-        int availableSpace = (height - this.menuTitle.getPreferredSize().height - this.playGame.getPreferredSize().height - this.optionsGame.getPreferredSize().height - this.creditGame.getPreferredSize().height - this.exitGame.getPreferredSize().height) / 5;
+        int availableSpace = (height - this.menuTitle.getMaximumSize().height - this.playGame.getMaximumSize().height - this.optionsGame.getMaximumSize().height - this.creditGame.getMaximumSize().height - this.exitGame.getMaximumSize().height) / 5;
 
-        this.menuTitle.setBounds(    50, 15,                                            this.menuTitle.getPreferredSize().width,    this.menuTitle.getPreferredSize().height);
-        this.playGame.setBounds(     50, this.menuTitle.getY() + availableSpace + 15,   this.playGame.getPreferredSize().width,     this.playGame.getPreferredSize().height);
-        this.optionsGame.setBounds(  50, this.playGame.getY() + availableSpace + 15,    this.optionsGame.getPreferredSize().width,  this.optionsGame.getPreferredSize().height);
-        this.creditGame.setBounds(   50, this.optionsGame.getY() + availableSpace + 15, this.creditGame.getPreferredSize().width,   this.creditGame.getPreferredSize().height);
-        this.exitGame.setBounds(     50, this.creditGame.getY() + availableSpace + 15,  this.exitGame.getPreferredSize().width,     this.exitGame.getPreferredSize().height);
+        this.menuTitle.setBounds(    50, 15,                                            this.menuTitle.getMaximumSize().width+20,    this.menuTitle.getMaximumSize().height);
+        this.playGame.setBounds(     50, this.menuTitle.getY() + availableSpace + 15,   this.playGame.getMaximumSize().width+20,     this.playGame.getMaximumSize().height);
+        this.optionsGame.setBounds(  50, this.playGame.getY() + availableSpace + 15,    this.optionsGame.getMaximumSize().width+20,  this.optionsGame.getMaximumSize().height);
+        this.creditGame.setBounds(   50, this.optionsGame.getY() + availableSpace + 15, this.creditGame.getMaximumSize().width+20,   this.creditGame.getMaximumSize().height);
+        this.exitGame.setBounds(     50, this.creditGame.getY() + availableSpace + 15,  this.exitGame.getMaximumSize().width+20,     this.exitGame.getMaximumSize().height);
 
-        this.versionLabel.setBounds(width-this.versionLabel.getPreferredSize().width-10, height - this.versionLabel.getPreferredSize().height-30, this.versionLabel.getPreferredSize().width, this.versionLabel.getPreferredSize().height);
-
+        this.versionLabel.setBounds(width-this.versionLabel.getMaximumSize().width-20, height - this.versionLabel.getMaximumSize().height-40, this.versionLabel.getMaximumSize().width+20, this.versionLabel.getMaximumSize().height);
         /*
          * Saving positions and sizes
          */

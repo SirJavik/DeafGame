@@ -3,13 +3,15 @@ package net.javik.DeafGame.DeafButtons;
 import net.javik.DeafGame.DeafBasics.DeafWindow;
 import net.javik.DeafGame.DeafMenus.DeafMenu;
 import net.javik.DeafGame.DeafMenus.GameMenu;
+import org.jetbrains.annotations.NotNull;
 
-public class PlayButton extends DeafButton implements IDeafButton{
+public class PlayButton extends DeafButton {
     public PlayButton() {
         super("Spielen");
     }
 
-    public void buttonTrigger(DeafWindow window, DeafMenu parent) {
+    @Override
+    public void buttonTrigger(@NotNull DeafWindow window, @NotNull DeafMenu parent) {
        parent.close(window);
 
         window.setLayout(null);
