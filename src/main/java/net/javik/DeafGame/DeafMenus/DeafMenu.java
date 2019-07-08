@@ -10,4 +10,10 @@ public class DeafMenu extends JPanel implements IDeafMenu {
         parent.validate();
         parent.repaint();
     }
+
+    public void update(DeafWindow parent) {
+        parent.invalidate();
+        parent.validate();
+        parent.repaint();
+    }
 }

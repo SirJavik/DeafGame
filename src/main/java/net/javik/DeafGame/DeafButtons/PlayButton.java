@@ -10,9 +10,19 @@ public class PlayButton extends DeafButton implements IDeafButton{
     }
 
     public void buttonTrigger(DeafWindow window, DeafMenu parent) {
-        parent.close(window);
+       parent.close(window);
 
-        GameMenu gameMenu = new GameMenu();
-        parent.add(gameMenu);
+        window.setLayout(null);
+
+        GameMenu gameMenu = new GameMenu(window, 900,1600, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", "1.1.0");
+        gameMenu.setBounds(0,0,1600,900);
+
+        window.add(gameMenu);
+
+        /*window.invalidate();
+        window.validate();
+        window.repaint();*/
+        //window.update(window);
+
     }
 }
