@@ -51,6 +51,7 @@ public class DeafMain {
         /* ------------------------------------------------------------------------ *
          * Run update check
          * ------------------------------------------------------------------------ */
+
         if(updateAuto) {
             DeafConsole.writeLine("DeafUpdater goes on");
 

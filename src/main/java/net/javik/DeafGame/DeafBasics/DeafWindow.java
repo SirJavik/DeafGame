@@ -1,5 +1,7 @@
 package net.javik.DeafGame.DeafBasics;
 
+import javazoom.jl.player.advanced.AdvancedPlayer;
+import net.javik.DeafGame.DeafAudioPlayer;
 import net.javik.DeafGame.DeafMain;
 import net.javik.DeafGame.DeafMenus.MainMenu;
 
@@ -18,6 +20,7 @@ public class DeafWindow extends JFrame {
      */
     private int windowHeight    = 0;
 
+
     /* ------------------------------------------------------------------------ *
      * DeafWindow functions
      * ------------------------------------------------------------------------ */
@@ -26,9 +29,11 @@ public class DeafWindow extends JFrame {
         /**
          * Call JFrame constructor with super
          * Like PHP's parent::__construct();
-         * Why the fuck call they it super?!
          */
         super(title);
+
+        DeafAudioPlayer audioPlayer = new DeafAudioPlayer();
+        audioPlayer.playAudio("assets/sounds/mainmenuTheme.mp3");
 
         /**
          * Signal handling
@@ -36,7 +41,10 @@ public class DeafWindow extends JFrame {
          */
         addWindowListener(new WindowAdapter()
         {
-            public void windowClosing(WindowEvent evt) { dispose(); }
+            public void windowClosing(WindowEvent evt) {
+                dispose();
+                System.exit(0);
+            }
         });
 
 
@@ -51,7 +59,7 @@ public class DeafWindow extends JFrame {
         /**
          * Main menu
          */
-        MainMenu menu = new MainMenu(this, this.windowHeight,this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
+        MainMenu menu = new MainMenu(this, this.windowHeight, this.windowWidth, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", version);
         menu.setBounds(0,0,this.windowWidth,this.windowHeight);
 
         this.add(menu);

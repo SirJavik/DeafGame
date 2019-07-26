@@ -98,10 +98,6 @@ public class MainMenu extends ImageMenu implements IDeafMenu, MouseListener {
         this.add(this.creditGame);
         this.add(this.exitGame);
         this.add(this.versionLabel);
-
-        DeafAudioPlayer audioPlayer = new DeafAudioPlayer();
-        audioPlayer.playAudio("assets/sounds/mainmenuTheme.mp3");
-
     }
 
     /* ------------------------------------------------------------------------ *

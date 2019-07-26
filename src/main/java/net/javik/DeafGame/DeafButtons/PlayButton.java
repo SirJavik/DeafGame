@@ -16,15 +16,9 @@ public class PlayButton extends DeafButton {
 
         window.setLayout(null);
 
-        GameMenu gameMenu = new GameMenu(window, 900,1600, "assets/img/nasa-Q1p7bh3SHj8-unsplash.jpg", "1.1.0");
-        gameMenu.setBounds(0,0,1600,900);
+        GameMenu gameMenu = new GameMenu(window, window.getHeight(), window.getWidth());
+        gameMenu.setBounds(0,0,window.getWidth(), window.getHeight());
 
         window.add(gameMenu);
-
-        /*window.invalidate();
-        window.validate();
-        window.repaint();*/
-        //window.update(window);
-
     }
 }

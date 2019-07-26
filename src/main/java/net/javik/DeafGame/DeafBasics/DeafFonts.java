@@ -15,4 +15,6 @@ public class DeafFonts {
 
     public final static Font MenuEntities = new Font("Arial",Font.BOLD,30);
     public final static Font VersionLabel = new Font("Arial",Font.BOLD,15);
+
+    public final static Font gameFont = new Font("Arial",Font.BOLD,30);
 }

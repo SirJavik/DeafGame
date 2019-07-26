@@ -5,7 +5,7 @@ import net.javik.DeafGame.DeafMenus.DeafMenu;
 
 import javax.swing.*;
 
-public class DeafButton extends JLabel implements IDeafButton {
+abstract public class DeafButton extends JLabel implements IDeafButton {
     public DeafButton(String title) {
         super(title);
     }

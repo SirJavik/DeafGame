@@ -16,4 +16,10 @@ public class DeafMenu extends JPanel implements IDeafMenu {
         parent.validate();
         parent.repaint();
     }
+
+    public void update() {
+        this.invalidate();
+        this.validate();
+        this.repaint();
+    }
 }
