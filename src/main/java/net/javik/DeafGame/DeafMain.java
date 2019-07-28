@@ -5,6 +5,8 @@ import net.javik.DeafGame.DeafBasics.DeafConsole;
 import net.javik.DeafGame.DeafBasics.DeafWindow;
 import net.javik.DeafGame.DeafUpdater.DeafUpdater;
 
+import java.io.IOException;
+
 public class DeafMain {
     private static final int PLAY_BTN = 1000,
                              OPTIONS_BTN = 1200,
@@ -37,10 +39,11 @@ public class DeafMain {
         /*
          * Update repository, protocol, branch and autoupdate
          */
-        String updateRepo       = deafConfig.readString("updater","repo");
-        String updateProtocol   = deafConfig.readString("updater","protocol");
-        String updateBranch     = deafConfig.readString("updater","branch");
-        boolean updateAuto      = deafConfig.readBool("updater","autoupdate");
+        String updateServer         = deafConfig.readString("updater","server");
+        int updatePort              = deafConfig.readInt("updater","port");
+        String updateProtocol       = deafConfig.readString("updater","protocol");
+        String updateVersionFile    = deafConfig.readString("updater","versionfile");
+        boolean updateAuto          = deafConfig.readBool("updater","autoupdate");
 
         /* ------------------------------------------------------------------------ *
          * DeafGame initialization
@@ -55,13 +58,27 @@ public class DeafMain {
         if(updateAuto) {
             DeafConsole.writeLine("DeafUpdater goes on");
 
-            DeafUpdater deafUpdater = new DeafUpdater(updateBranch);
+            try {
+                DeafUpdater deafUpdater = new DeafUpdater(updateServer, updatePort, updateProtocol, updateVersionFile, verString.replace("v", ""));
 
-            if(deafUpdater.updateCheck()) {
-                DeafConsole.writeLine("Update requied");
-            } else {
-                DeafConsole.writeLine("No update needed: Project already up-to-date");
-                DeafConsole.writeLine("DeafUpdater goes off");
+                if(deafUpdater.updateCheck()) {
+                    DeafConsole.writeLine("Update required");
+                    DeafConsole.writeLine("Old version: " +verString);
+                    DeafConsole.writeLine("New version: "  + deafUpdater.newVersion());
+
+                    deafUpdater.downloadNew();
+
+                    DeafConsole.writeLine("Extracting...");
+                    deafUpdater.extractFile();
+                    DeafConsole.writeLine("Finished");
+
+                } else {
+                    DeafConsole.writeLine("No update needed: Project already up-to-date");
+                    DeafConsole.writeLine("DeafUpdater goes off");
+                }
+            }  catch (IOException ex) {
+                DeafConsole.Error.writeLine(ex.getMessage());
+                ex.printStackTrace();
             }
         }
 

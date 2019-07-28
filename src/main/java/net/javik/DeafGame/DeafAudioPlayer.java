@@ -25,7 +25,7 @@ public class DeafAudioPlayer {
                 public void run()
                 {
                     try {
-                        player.play(5000);
+                        player.play(Integer.MAX_VALUE);
                     }
                     catch(JavaLayerException e) {
                         reportProblem(audioFile);
