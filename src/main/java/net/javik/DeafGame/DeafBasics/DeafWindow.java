@@ -1,15 +1,13 @@
 package net.javik.DeafGame.DeafBasics;
 
-import javazoom.jl.player.advanced.AdvancedPlayer;
 import net.javik.DeafGame.DeafAudioPlayer;
-import net.javik.DeafGame.DeafMain;
 import net.javik.DeafGame.DeafMenus.MainMenu;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class DeafWindow extends JFrame {
+public class DeafWindow extends JFrame implements ActionListener {
     /**
      * Window width
      */
@@ -24,6 +22,25 @@ public class DeafWindow extends JFrame {
     /* ------------------------------------------------------------------------ *
      * DeafWindow functions
      * ------------------------------------------------------------------------ */
+
+    /*static void renderSplashFrame(Graphics2D g, int frame) {
+        final String[] comps = {"foo", "bar", "baz"};
+        g.setComposite(AlphaComposite.Clear);
+        g.fillRect(120,140,200,40);
+        g.setPaintMode();
+        g.setColor(Color.BLACK);
+        g.drawString("Loading "+comps[(frame/5)%3]+"...", 120, 150);
+    }*/
+
+    public void actionPerformed(ActionEvent ae) {
+        System.exit(0);
+    }
+
+    private static WindowListener closeWindow = new WindowAdapter(){
+        public void windowClosing(WindowEvent e){
+            e.getWindow().dispose();
+        }
+    };
 
     public DeafWindow( int width, int height, String title, String version ) {
         /**

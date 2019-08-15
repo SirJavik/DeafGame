@@ -149,12 +149,10 @@ public class DeafUpdater {
                     System.out.print("\b");
                     pointCount--;
                 }
-
                 pointCount = 0;
             }
         });
         downloadBar.start();
-
 
         ReadableByteChannel rbc = Channels.newChannel(url.openStream());
         FileOutputStream fos = new FileOutputStream("tmp/v"+this.newVersion+".7z");
